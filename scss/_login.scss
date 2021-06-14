@@ -1,0 +1,68 @@
+.loginArea {
+    background-color: lighten($primary-color, 10%);
+    width: 100%;
+    height: 100vh;
+    padding: 10px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+table {
+    /* border: 1px solid white; */
+    font-size: 28px;
+    padding: 10px;
+    margin: 0 auto;
+}
+
+table input {
+    font-size: 20px;
+    margin: 10px;
+}
+
+.highLight {
+    background-color: lighten($primary-color, 40%);
+}
+
+table {
+    input {
+        border: none;
+        width: 300px;
+        border-bottom: 2px solid white;
+        padding: 10px;
+        background-color: transparent;
+        color: black;
+        &::placeholder {
+            color: #aaa;
+        }
+        &:focus {
+            outline: none;
+            transition: .2s;
+            &::placeholder {
+                color: #777;
+            }
+        }
+    }
+}
+
+input[type="submit"] {
+    border: 0;
+    font-size: 24px;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid darken($primary-color, 20%);
+    padding: 14px 40px;
+    width: 200px;
+    outline: none;
+    color: black;
+    border-radius: 24px;
+    transition: .25s;
+    cursor: pointer;
+    &:hover {
+        color: white;
+        background-color: lighten($primary-color, 10%);
+        width: 250px;
+        transition: .3s;
+    }
+}
