@@ -7,7 +7,7 @@
 session_start();
 include("sql_connect.inc.php");
 
-if($_SESSION['id']!=null&&$_SESSION['authority']>=3)
+if($_SESSION['id']!=null&&$_SESSION['authority']>=2)
 {
 
 
@@ -27,7 +27,13 @@ if($_SESSION['id']!=null&&$_SESSION['authority']>=3)
     mysql_query($sql2) or die("無法連接資料庫:".mysql_error());
 
     echo "新增公告成功";
-    echo '<meta http-equiv=REFRESH CONTENT=1;url=admin.php>';
+    if($_SESSION['authority']==2){
+        echo '<meta http-equiv=REFRESH CONTENT=1;url=undertaker.php>';
+    }
+    if($_SESSION['authority']==3){
+        echo '<meta http-equiv=REFRESH CONTENT=1;url=admin.php>';
+    }
+    
 
 }
 else
