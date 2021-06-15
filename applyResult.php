@@ -333,7 +333,9 @@
                             '".$money."',
                             '0',
                             '".$str2."',
-                            '".$applicationFormType."'
+                            '".$applicationFormType."',
+                            '0',
+                            '0'
                       )";
                 mysql_query($sql) or die("無法連接資料庫。".mysql_error());
 

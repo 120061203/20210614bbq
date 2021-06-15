@@ -59,6 +59,23 @@ if($_SESSION['id']!=null&&($_SESSION['authority']==3))
                     編輯帳號
                 </div>
             </div>
+            <br>
+            <div class="card">
+                <a href="adminAnnounce.php">
+                    <i class="fas fa-bullhorn"></i>
+                </a>
+                <div class="cardIntro">
+                    系統公告
+                </div>
+            </div>
+            <div class="card">
+                <a href="adminSaveToCsv.php">
+                    <i class="far fa-save"></i>
+                </a>
+                <div class="cardIntro">
+                    資料歸檔
+                </div>
+            </div>
             <div class="card">
                 <a href="logout.php">
                     <i class="fas fa-sign-out-alt"></i>
