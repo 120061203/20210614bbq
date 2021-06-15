@@ -1,0 +1,16 @@
+.announceContentArea{
+    width: 80%;
+    margin: 0 auto;
+    .announceTitle{
+        margin-top: 50px;
+        font-size: 2rem;
+        color:white;
+        text-align: center;
+        background-color: $primary-color;
+    }
+    .announceContent{
+        font-size: 1.5rem;
+        line-height: 2rem;
+        text-indent: 3rem;
+    }
+}

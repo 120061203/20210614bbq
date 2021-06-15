@@ -17,8 +17,40 @@
     <header>
         <a href="index.php">國立高雄大學烤肉區租賃系統</a>
     </header>
-    <?
-    include("sql_connect.inc.php");
+    <?php
+        include("sql_connect.inc.php");
+        $sql_findMax_announceID ="SELECT MAX(announce_id) FROM announce";
+        $announce_id_arr = mysql_fetch_array(mysql_query($sql_findMax_announceID));
+        $announce_id_max = $announce_id_arr[0];
+        // echo "maxId".$announce_id_max;
+
+        
+            $sql_query = "SELECT * FROM `announce` WHERE announce_id = ".$announce_id_max; //下sql語法
+            $result = mysql_query($sql_query); //執行sql語法，執行完會丟給result
+            if (mysql_num_rows($result) == 1) {//if1 有找到這個人
+                //flag = 1有這個人
+                while ($row = mysql_fetch_array($result)) {//while1
+                    
+                    // echo'<tr>';
+                    // echo'<td>'.$row[0];
+                    // echo'<td>'.$row[1];
+                    // echo'<td>'.$row[2];//印名字
+                    // echo'<td>'.$row[3];
+                    $announce_id = $row['announce_id'];
+                    $announce_date = $row['announce_date'];
+                    $announce_title = $row['announce_title'];
+                    $announce_content = $row['announce_content'];
+
+                    // echo '<td>'.$announce_id."id\n";
+                    // echo '<td>'.$announce_date."\n";
+                    // echo '<td>'.$announce_title."\n";
+                    // echo '<td>'.$announce_content."\n";
+                }
+            }
+                
+            
+        
+        
     ?>
     <nav>
         <div class="wrap">
@@ -56,7 +88,38 @@
     </nav>
 
     <div class="container">
-        
+            <h1>最新公告</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>時間</th>
+                        <th>公告事項</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                        for($i=$announce_id_max; $i>$announce_id_max-5 ;$i--){
+                            $sql_query = "SELECT * FROM `announce` WHERE announce_id = ".$i; //下sql語法
+                            $result = mysql_query($sql_query); //執行sql語法，執行完會丟給result
+                            if (mysql_num_rows($result) == 1) {//if1 有找到這個人
+                            //flag = 1有這個人
+                                while ($row = mysql_fetch_array($result)) {//while1 //for1
+                                    $announce_id = $row['announce_id'];
+                                    $announce_date = $row['announce_date'];
+                                    $announce_title = $row['announce_title'];
+                                    $announce_content = $row['announce_content'];
+                    ?>
+                    <tr>
+                        <td><?php echo $announce_date?></td>
+                        <td><a href="announceContent.php?announce_id=<?php echo $announce_id?>"><?php echo $announce_title?></a></td>
+                    </tr>
+
+                                <?}//while1 end?>
+                            <?}//if1 end?>
+                        <?}//for1 end?>
+                </tbody>
+            </table>
+            
             <h1>簡介</h1>
             <div class="introduce">
                 

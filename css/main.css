@@ -66,6 +66,26 @@ nav a:hover {
   text-align: center;
 }
 
+th, td {
+  width: 50%;
+  text-align: center;
+  font-size: 26px;
+  /* border-bottom: 1px solid #efeeee; */
+}
+
+thead tr {
+  color: #444;
+  background-color: #fabe00;
+}
+
+tbody:nth-child(even) tr {
+  border-bottom: 2px solid #f5ba00;
+}
+
+tbody:nth-child(odd) {
+  border-bottom: none;
+}
+
 .introduce .introTitle {
   width: 50%;
   float: right;
@@ -731,5 +751,24 @@ header h1 {
 .adminArea .renterWall .card .cardIntro {
   position: relative;
   top: -20px;
+}
+
+.announceContentArea {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.announceContentArea .announceTitle {
+  margin-top: 50px;
+  font-size: 2rem;
+  color: white;
+  text-align: center;
+  background-color: #fabe00;
+}
+
+.announceContentArea .announceContent {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  text-indent: 3rem;
 }
 /*# sourceMappingURL=main.css.map */
