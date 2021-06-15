@@ -8,6 +8,7 @@ header {
 
 body {
     min-width: 620px;
+    overflow: hidden;
 }
 
 a {
@@ -58,31 +59,33 @@ nav a:hover {
     // padding: 10px 0;
     text-align: center;
 }
-
-th,td {
+.announceArea {
+    th,td {
     width: 50%;
     text-align: center;
     font-size: 26px;
     /* border-bottom: 1px solid #efeeee; */
+    }
     a{
         color:darken($primary-color,10%);
         &:hover{
             color:$primary-color; 
         }
     }
+    thead tr {
+        color: #444;
+        background-color: $primary-color;
     }
+    tbody:nth-child(even) tr {
+        // background-color: lighten($primary-color, 40%);
+        border-bottom: 2px solid darken($primary-color, 1%);
+    }
+    tbody:nth-child(odd) {
+        border-bottom: none;
+    }
+}
 
-thead tr {
-    color: #444;
-    background-color: $primary-color;
-}
-tbody:nth-child(even) tr {
-    // background-color: lighten($primary-color, 40%);
-    border-bottom: 2px solid darken($primary-color, 1%);
-}
-tbody:nth-child(odd) {
-    border-bottom: none;
-}
+
 
 
 

@@ -89,6 +89,7 @@
 
     <div class="container">
             <h1>最新公告</h1>
+            <div class="announceArea">
             <table>
                 <thead>
                     <tr>
@@ -119,6 +120,8 @@
                         <?}//for1 end?>
                 </tbody>
             </table>
+            </div>
+            
             
             <h1>簡介</h1>
             <div class="introduce">
