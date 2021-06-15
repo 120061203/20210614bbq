@@ -15,7 +15,7 @@
 <body>
 <?php
 include("sql_connect.inc.php");
-if($_SESSION['id']!=null&&$_SESSION['authority']==3){
+if($_SESSION['id']!=null&&$_SESSION['authority']>=2){
 ?>
     <header>
         <a href="index.php">國立高雄大學烤肉區租賃系統</a>
