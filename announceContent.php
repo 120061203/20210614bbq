@@ -14,14 +14,50 @@
 </head>
 
 <body>
+<?php
+        include("sql_connect.inc.php");
+        $announce_id = $_GET["announce_id"];
+        
+        // echo "maxId".$announce_id_max;
+
+        // echo $announce_id;
+            $sql_query = "SELECT * FROM `announce` WHERE announce_id = ".$announce_id; //下sql語法
+            $result = mysql_query($sql_query); //執行sql語法，執行完會丟給result
+            if (mysql_num_rows($result) == 1) {//if1 有找到這個人
+                //flag = 1有這個人
+                while ($row = mysql_fetch_array($result)) {//while1
+                    
+                    // echo'<tr>';
+                    // echo'<td>'.$row[0];
+                    // echo'<td>'.$row[1];
+                    // echo'<td>'.$row[2];//印名字
+                    // echo'<td>'.$row[3];
+                    // $announce_id = $row['announce_id'];
+                    $announce_date = $row['announce_date'];
+                    $announce_title = $row['announce_title'];
+                    $announce_content = $row['announce_content'];
+
+                    // echo '<td>'.$announce_id."id\n";
+                    // echo '<td>'.$announce_date."\n";
+                    // echo '<td>'.$announce_title."\n";
+                    // echo '<td>'.$announce_content."\n";
+                }
+            }
+                
+            
+        
+        
+    ?>
+
     <header>
         <a href="index.php">國立高雄大學烤肉區租賃系統</a>
     </header>
     <div class="container">
         <div class="announceContentArea">
-            <div class="announceTitle">提前公主一批促進，藝術公司精品傳說，突。</div>
-            <div class="announceContent">系統以來某個發行臉色之類房產，參加體力交換小孩改造供應藝術固定個人多次，包含開發商只見詢問完善並在試驗傳奇市委目標站在筆者信心，適合傳輸美女臨床主板高考一項，化學怎麼樣，圖片數碼區域，臺灣一笑，採訪。</div>
-            <div class="announceDate">公告日期:2021-06-14</div>
+            <h1>宿舍公告</h1>
+            <div class="announceTitle"><?php echo $announce_title?></div>
+            <div class="announceContent"><?php echo $announce_content?></div>
+            <div class="announceDate">公告日期:<?php echo $announce_date?></div>
         </div> 
     </div>
     

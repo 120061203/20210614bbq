@@ -64,6 +64,12 @@ th,td {
     text-align: center;
     font-size: 26px;
     /* border-bottom: 1px solid #efeeee; */
+    a{
+        color:darken($primary-color,10%);
+        &:hover{
+            color:$primary-color; 
+        }
+    }
     }
 
 thead tr {

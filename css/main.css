@@ -73,6 +73,14 @@ th, td {
   /* border-bottom: 1px solid #efeeee; */
 }
 
+th a, td a {
+  color: #c79700;
+}
+
+th a:hover, td a:hover {
+  color: #fabe00;
+}
+
 thead tr {
   color: #444;
   background-color: #fabe00;
@@ -759,7 +767,6 @@ header h1 {
 }
 
 .announceContentArea .announceTitle {
-  margin-top: 50px;
   font-size: 2rem;
   color: white;
   text-align: center;
@@ -770,5 +777,6 @@ header h1 {
   font-size: 1.5rem;
   line-height: 2rem;
   text-indent: 3rem;
+  margin-bottom: 40px;
 }
 /*# sourceMappingURL=main.css.map */
