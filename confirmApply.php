@@ -113,7 +113,7 @@
                     <td>
                         <div class="confirmButton">
                             <div class="yes">
-                                <a href="confirmApplyAccept.php?afid=<? echo $row["af_id"]; ?>"><i class="fas fa-check"></i></a>
+                                <a href="confirmApplyAccept.php?afid=<? echo $row["af_id"]; ?> & renterid=<? echo $row["renter_account"] ?>"><i class="fas fa-check"></i></a>
                             </div>
                             <div class="no">
                                 <a href="confirmApplyDeny.php?afid=<? echo $row["af_id"]; ?>"><i class="fas fa-times"></i></a>
