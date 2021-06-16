@@ -774,9 +774,12 @@ header h1 {
 }
 
 .announceContentArea .announceContent {
+  width: 100%;
+  word-break: break-all;
   font-size: 1.5rem;
   line-height: 2rem;
   margin-bottom: 40px;
+  background-color: red;
 }
 
 .adminAnnounceArea {

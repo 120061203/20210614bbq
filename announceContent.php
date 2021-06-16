@@ -54,7 +54,7 @@
     </header>
     <div class="container">
         <div class="announceContentArea">
-            <h1>宿舍公告</h1>
+            <h1>最新公告</h1>
             <div class="announceTitle"><?php echo $announce_title?></div>
             <div class="announceContent"><?php echo $announce_content?></div>
             <div class="announceDate">公告日期:<?php echo $announce_date?></div>

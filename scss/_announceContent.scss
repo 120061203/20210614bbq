@@ -10,9 +10,12 @@
     }
     .announceContent{
         // background-color: red;
+        width: 100%;
+        word-break: break-all;
         font-size: 1.5rem;
         line-height: 2rem;
         // text-indent: 3rem;
         margin-bottom: 40px;
+        background-color: red;
     }
 }
