@@ -786,4 +786,84 @@ header h1 {
   background-color: #fabe00;
   height: 100vh;
 }
+
+.container .confirmRefundArea table {
+  background-color: #ffd961;
+  color: #222;
+  width: 80%;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 10px;
+  border: none;
+  border-collapse: collapse;
+  /* padding: 0; */
+}
+
+.container .confirmRefundArea table:nth-child(even) {
+  margin-bottom: 20px;
+}
+
+.container .confirmRefundArea th,
+.container .confirmRefundArea td {
+  width: 20%;
+  text-align: center;
+  font-size: 22px;
+  /* border-bottom: 1px solid #efeeee; */
+}
+
+.container .confirmRefundArea thead tr {
+  color: #444;
+  background-color: #fabe00;
+}
+
+.container .confirmRefundArea tbody:nth-child(even) tr {
+  border-bottom: 2px solid #f5ba00;
+}
+
+.container .confirmRefundArea tbody:nth-child(odd) {
+  border-bottom: none;
+}
+
+.container .confirmRefundArea tr:nth-child(even) {
+  background-color: #fff;
+  margin-bottom: 20px;
+  height: 80px;
+}
+
+.container .confirmRefundArea .confirmButton {
+  width: 90px;
+  text-align: center;
+  float: right;
+  position: relative;
+  top: -12px;
+}
+
+.container .confirmRefundArea .confirmButton a {
+  display: inline;
+  font-size: 30px;
+  color: white;
+}
+
+.container .confirmRefundArea .confirmButton .yes {
+  display: inline-block;
+  background-color: #6cd46c;
+  border-radius: 20px;
+  width: 40px;
+}
+
+.container .confirmRefundArea .confirmButton .yes:hover {
+  background-color: #268126;
+}
+
+.container .confirmRefundArea .confirmButton .no {
+  display: inline-block;
+  background-color: #eea0a0;
+  border-radius: 20px;
+  width: 40px;
+}
+
+.container .confirmRefundArea .confirmButton .no:hover {
+  background-color: #d02525;
+}
 /*# sourceMappingURL=main.css.map */

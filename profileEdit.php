@@ -49,7 +49,7 @@
                                 </tr>
                                 <tr>
                                     <td><i class="fas fa-envelope"></i></i></td>
-                                    <td><input type="text" maxLength="20" size="20" name="email" placeholder="例:a1075501@gmail.com" value="<?echo $row[4]?>" required></td>
+                                    <td><input type="text" maxLength="100" size="20" name="email" placeholder="例:a1075501@gmail.com" value="<?echo $row[4]?>" required></td>
                                 </tr>
                             </tbody>
                             

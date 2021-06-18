@@ -68,6 +68,8 @@
                         <td>
                         <?
                             if($row['payoff_status']==0) echo "還不付錢啊？";
+                            else if($row['apply_refund']==2) echo "退費審核通過";
+                            else if($row['apply_refund']==3) echo "退費審核不通過";
                             else if($row['payoff_status']==1) echo "審核通過記得來烤肉。";
                             else if($row['payoff_status']==2) echo "審核不通過，請聯絡承辦人。";
                         ?>

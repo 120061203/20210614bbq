@@ -43,16 +43,7 @@
                         審核申請
                     </div>
                 </div>
-                <div class="card">
-                    <a href="profileEdit.php">
-                        <i class="fas fa-user-circle"></i>
-                    </a>
-                    <div class="cardIntro">
-                        個人資料
-                    </div>
-                </div>
-                <br>
-                <div class="card">
+               <div class="card">
                     <a href="confirmRefund.php">
                         <i class="fas fa-user-times"></i>
                     </a>
@@ -61,13 +52,13 @@
                     </div>
                 </div>
                 <div class="card">
-                <a href="adminAnnounce.php">
-                    <i class="fas fa-bullhorn"></i>
-                </a>
-                <div class="cardIntro">
-                    系統公告
+                    <a href="profileEdit.php">
+                        <i class="fas fa-user-circle"></i>
+                    </a>
+                    <div class="cardIntro">
+                        個人資料
+                    </div>
                 </div>
-            </div>
                 <div class="card">
                     <a href="logout.php">
                         <i class="fas fa-sign-out-alt"></i>
