@@ -45,6 +45,7 @@
                     <td>電話</td>
                     <td>收據抬頭</td>
                     <td>統一編號</td>
+                    <td>操作</td>
                 </tr>
                 </thead>
                 <tbody>
@@ -67,10 +68,13 @@
                 ?>
                     <tr>
                         <td>
-                        <?
-                            if($row['payoff_status']==0) echo "還沒付錢";
-                            else if($row['payoff_status']==1) echo "審核通過，記得來烤肉。";
-                            else if($row['payoff_status']==2) echo "審核不通過，請聯絡承辦人。";
+                        <?  
+                            if($row['apply_refund']==1) echo "退費審核中";
+                            else if($row['apply_refund']==2) echo "退費審核通過";
+                            else if($row['apply_refund']==3) echo "退費審核不通過";
+                            if($row['payoff_status']==0) echo "未繳費";
+                            else if($row['payoff_status']==1) echo "已繳費";
+                            
                         ?>
                         </td>
                         <td>
@@ -135,6 +139,9 @@
                         <?
                             echo $row['uniform_id'];
                         ?>
+                        </td>
+                        <td>
+                            <a href="applyRefund.php?af_id=<?echo $row['af_id']?>">申請退費</a>
                         </td>
                     </tr>
                     <?
