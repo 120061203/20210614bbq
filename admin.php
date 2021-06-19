@@ -85,6 +85,22 @@ if($_SESSION['id']!=null&&($_SESSION['authority']==3))
                 </div>
             </div>
             <div class="card">
+                <a href="areaManage.php">
+                <i class="fas fa-layer-group"></i>
+                </a>
+                <div class="cardIntro">
+                    場地管理
+                </div>
+            </div>
+            <div class="card">
+                <a href="areaAdd.php">
+                    <i class="far fa-plus-square"></i>
+                </a>
+                <div class="cardIntro">
+                    新增場地
+                </div>
+            </div>
+            <div class="card">
                 <a href="logout.php">
                     <i class="fas fa-sign-out-alt"></i>
                 </a>

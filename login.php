@@ -10,6 +10,7 @@
     <style>
         <? session_start(); include "css/main.css" ?>
     </style>
+    <link rel="shortcut icon" href="logo/nuklogo.ico" type="image/x-icon">
     <script src="https://kit.fontawesome.com/f810d2bb4c.js" crossorigin="anonymous"></script>
     
 </head>

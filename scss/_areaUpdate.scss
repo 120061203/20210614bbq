@@ -1,0 +1,24 @@
+.areaUpdateArea {
+    background-color: lighten($primary-color, 10%);
+    width: 100%;
+    height: 100vh;
+    padding: 10px;
+    margin: 0 auto;
+    text-align: right;
+    td:nth-child(odd) {
+        // background-color: #fff;
+        text-align: right;
+    }
+    select {
+        display: block;
+        height: 32px;
+        line-height: 32px;
+        font-size: 22px;
+        width: 300px;
+        margin: 20px auto;
+        border: none;
+        &:focus {
+            border: none;
+        }
+    }
+}

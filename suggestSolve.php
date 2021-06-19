@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>意見處理</title>
+    <title>意見回報</title>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <style>
@@ -47,8 +47,7 @@
                             <td><input type="hidden"  name="applicantID" value=<?echo $rowUser[0];?>></td>
                             <td><input type="hidden"  name="email" value=<?echo $rowUser[4];?>></td>
                             <td><input type="hidden"  name="applicantName" value=<?echo $rowUser[3];?>></td>
-                            <?echo $rowUser[0];?>
-                            <?echo $rowUser[4];?>
+                            
                         </tr>
                         </tbody>
                     </table>
