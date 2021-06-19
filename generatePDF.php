@@ -3,8 +3,66 @@
 // Include the main TCPDF library (search for installation path).
 
 date_default_timezone_set('Asia/Taipei');
-require_once('TCPDF/tcpdf.php');
+include("sql_connect.inc.php");
 
+
+$afId = $_GET['af_id'];
+
+$sql1 = " SELECT * FROM `renter_af` WHERE `af_id` = $afId ";
+$retval = mysql_fetch_array(mysql_query($sql1));
+$sql2 = " SELECT * FROM `bbq_af` WHERE `af_id` = $afId ";
+$time = mysql_fetch_array(mysql_query($sql2));
+
+$title = '
+<h4 style="font-size: 20pt; font-weight: normal; text-align:center;">高雄大學烤肉露營區繳費單</h4>
+
+';
+$fields = '
+        
+        <table style="width:90%;height:100%">
+        <tr style="border-bottom:1px solid #ddd;">
+            <td style="font-weight:bold;border-bottom:1px solid #ddd;">申請單編號</td>
+            <td style="border-bottom:1px solid #ddd;">' . $retval[0] . '</td>
+            <td style="font-weight:bold;border-bottom:1px solid #ddd;">使用時間</td>
+            <td style="border-bottom:1px solid #ddd;">'.$time[1].'~'.substr($time[2],11,8).'</td>
+        
+        </tr>
+        <tr style="border-bottom:1px solid #ddd;">
+            <td style="font-weight:bold;border-bottom:1px solid #ddd;">申請人</td>
+            <td style="border-bottom:1px solid #ddd;">'.$retval[3].'</td>
+            <td style="font-weight:bold;border-bottom:1px solid #ddd;">人數</td>
+            <td style="border-bottom:1px solid #ddd;">'.$retval[4].'</td>
+        </tr>
+        <tr style="border-bottom:1px solid #ddd;">
+            <td style="font-weight:bold;border-bottom:1px solid #ddd;">烤肉區數量</td>
+            <td style="border-bottom:1px solid #ddd;">'.$retval[6].'</td>
+            <td style="font-weight:bold;border-bottom:1px solid #ddd;">露營區數量</td>
+            <td style="border-bottom:1px solid #ddd;">'.$retval[7].'</td>
+        
+        </tr>
+        <tr >
+            <td style="font-weight:bold;border-bottom:1px solid #ddd;">總價</td>
+            <td style="border-bottom:1px solid #ddd;">'.$retval[8].'</td>
+            <td style="font-weight:bold;">承辦人簽章:</td>
+            <td></td>
+        
+        </tr>
+        </table>
+        ';
+        $html = $title . '
+        <table cellpadding="1" >
+            <tr>
+                <td>列印日期：' . date('Y-m-d') . ' ' . date('H:i') . '</td>
+                <td></td>
+                <td></td>        
+            </tr>
+            <tr>
+                <td colspan="3"></td>
+            </tr>
+        </table>' .  $fields;
+
+
+require_once('TCPDF/tcpdf.php');
 // Extend the TCPDF class to create custom Header and Footer
 // 自訂頁首與頁尾
 class MYPDF extends TCPDF {
@@ -14,11 +72,6 @@ class MYPDF extends TCPDF {
         $this->SetFont('msungstdlight', '', 10);
 
         // 公司與報表名稱
-        $title = '
-<h4 style="font-size: 20pt; font-weight: normal; text-align:center;">高雄大學烤肉露營區繳費單</h4>
-
-';
-
 
         /**
          * 標題欄位
@@ -28,38 +81,7 @@ class MYPDF extends TCPDF {
          * style 屬性可使用 text-align: left|center|right; 來設定文字水平對齊方式
          */
 
-        $fields = '
         
-        <table style="width:90%;height:100%">
-        <tr style="border-bottom:1px solid #ddd;">
-            <td style="font-weight:bold;border-bottom:1px solid #ddd;">申請單編號</td>
-            <td style="border-bottom:1px solid #ddd;">20210619154036000</td>
-            <td style="font-weight:bold;border-bottom:1px solid #ddd;">使用時間</td>
-            <td style="border-bottom:1px solid #ddd;">2021-06-20 09:00:00~17:00:00</td>
-        
-        </tr>
-        <tr style="border-bottom:1px solid #ddd;">
-            <td style="font-weight:bold;border-bottom:1px solid #ddd;">申請人</td>
-            <td style="border-bottom:1px solid #ddd;">song</td>
-            <td style="font-weight:bold;border-bottom:1px solid #ddd;">人數</td>
-            <td style="border-bottom:1px solid #ddd;">1</td>
-        </tr>
-        <tr style="border-bottom:1px solid #ddd;">
-            <td style="font-weight:bold;border-bottom:1px solid #ddd;">烤肉區數量</td>
-            <td style="border-bottom:1px solid #ddd;">1</td>
-            <td style="font-weight:bold;border-bottom:1px solid #ddd;">露營區數量</td>
-            <td style="border-bottom:1px solid #ddd;">0</td>
-        
-        </tr>
-        <tr >
-            <td style="font-weight:bold;border-bottom:1px solid #ddd;">總價</td>
-            <td style="border-bottom:1px solid #ddd;">1200</td>
-            <td style="font-weight:bold;">承辦人簽章:</td>
-            <td></td>
-        
-        </tr>
-        </table>
-        ';
 
         // 設定不同頁要顯示的內容 (數值為對應的頁數)
         switch ($this->getPage()) {
@@ -68,26 +90,16 @@ class MYPDF extends TCPDF {
                 $this->SetMargins(1, 50, 1);
 
                 // 增加列印日期的資訊
-                $html = $title . '
-<table cellpadding="1" >
-    <tr>
-        <td>列印日期：' . date('Y-m-d') . ' ' . date('H:i') . '</td>
-        <td></td>
-        <td></td>        
-    </tr>
-    <tr>
-        <td colspan="3"></td>
-    </tr>
-</table>' .  $fields;
+                
                 break;
             // 其它頁
             default:
                 $this->SetMargins(1, 40, 1);
-                $html = $title . $fields;
+                
         }
         
 		// Title
-        $this->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
+        #$this->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
 	}
 
 	// Page footer
@@ -207,4 +219,7 @@ $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
 // Close and output PDF document
 // This method has several options, check the source code documentation for more information.
 // 下載 PDF 的檔案名稱 (不可取中文名，即使有也會自動省略中文名)
+ob_end_clean();
 $pdf->Output('NUKbbq.pdf', 'I');
+
+?>

@@ -109,7 +109,7 @@
     else{
         echo "送交意見成功";
         echo "寄信成功";
-        echo '<meta http-equiv=REFRESH CONTENT=10;url=renter.php>';
+        echo '<meta http-equiv=REFRESH CONTENT=3;url=renter.php>';
     }
    
     ?>

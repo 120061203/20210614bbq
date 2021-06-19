@@ -25,7 +25,7 @@ if($_SESSION['id']!=null&&$_SESSION['authority']==3){
     </header>
 
     <div class="container">
-        <div class="applyArea">
+        <div class="newUserArea">
             <form action="newUserResult.php" method="post">
                 <table>
                     <tbody>
