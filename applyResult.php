@@ -359,7 +359,7 @@
                        WHERE `account`='".$id."'                
                        ";
                 mysql_query($sql) or die("無法連接資料庫。".mysql_error());
-                echo "申請成功。";
+                echo "申請成功";
                 echo '<meta http-equiv=REFRESH CONTENT=1;url=index.php>';
             }
         }

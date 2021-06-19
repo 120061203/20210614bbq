@@ -56,6 +56,14 @@
                     </div>
                 </div>
                 <div class="card">
+                    <a href="suggestSolve.php">
+                        <i class="far fa-envelope"></i>
+                    </a>
+                    <div class="cardIntro">
+                        意見回報
+                    </div>
+                </div>
+                <div class="card">
                     <a href="logout.php">
                         <i class="fas fa-sign-out-alt"></i>
                     </a>
