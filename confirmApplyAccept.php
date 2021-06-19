@@ -6,14 +6,8 @@
     <?
         session_start();
         include("sql_connect.inc.php");
-        //include("PHPMailerAutoload.php"); //匯入PHPMailer類別  
-        //$mail= new PHPMailer(); //建立新物件        
-        //$mail->IsSMTP(); //設定使用SMTP方式寄信        
-        //$mail->SMTPAuth = true; //設定SMTP需要驗證        
-        //$mail->SMTPSecure = "ssl"; // Gmail的SMTP主機需要使用SSL連線   
-        //$mail->Host = "smtp.gmail.com"; //Gamil的SMTP主機        
-        //$mail->Port = 465;  //Gamil的SMTP主機的SMTP埠位為465埠。        
-        //$mail->CharSet = "big5"; //設定郵件編碼       
+        $renterAccount=$_SESSION['id'];
+        $afid=$_GET["afid"];
         if($_SESSION['id']!=null&&$_SESSION['authority']==2) {
 
             $renterid=$_GET["renterid"];
@@ -23,22 +17,6 @@
             while($row=mysql_fetch_array($result)){
                 $rentermail=$row["email"];
             }
-
-            $subject = "高大露營烤肉區申請審核通過"; //信件標題
-            $msg = "親愛的使用者,       
-            您的註冊申請已審核通過! ";
-            $headers = "From: bbqsystem20210616@gmail.com"; //寄件者
-  
-            if(mail("$rentermail", "$subject", "$msg", "$headers")):
-             echo "信件已經發送成功。";
-            else:
-                echo "信件發送失敗！";
-            endif;
-            
-            $renterAccount=$_SESSION['id'];
-            $afid=$_GET["afid"];
-            
-
             if
             (
                 mysql_query
@@ -72,5 +50,77 @@
             echo '<meta http-equiv=REFRESH CONTENT=1;url=index.php>';
         }
     ?>
+
+<?
+
+
+date_default_timezone_set('Asia/Taipei');
+
+
+
+
+
+
+
+
+require("phpMailer\class.phpmailer.php");
+$mail = new PHPMailer();
+
+$mail->Host     = "smtp.gmail.com"; // SMTP server
+$mail->Port = 465;  //Gamil的SMTP主機的埠號(Gmail為465)。
+$mail->SMTPSecure = "ssl"; // Gmail的SMTP主機需要使用SSL連線
+$mail->IsSMTP();
+
+$mail->SMTPAuth = true; // turn on SMTP authentication
+$mail->CharSet = "utf-8"; //郵件編碼
+
+//這幾行是必須的
+    
+$mail->Username = "bbqsystem20210616@gmail.com";
+$mail->Password = "bbqsystemadmin";
+//這邊是你的gmail帳號和密碼
+    
+$mail->FromName = "國立高雄大學";
+// 寄件者名稱(你自己要顯示的名稱)
+$webmaster_email = $userEmail;
+//回覆信件至此信箱
+    
+    
+$email=$rentermail;
+// 收件者信箱
+$name="t2";
+// 收件者的名稱or暱稱
+$mail->From = $webmaster_email;
+    
+    
+$mail->AddAddress($email);
+//這不用改
+    
+$mail->WordWrap = 50;
+//每50行斷一次行
+    
+//$mail->AddAttachment("/XXX.rar");
+// 附加檔案可以用這種語法(記得把上一行的//去掉)
+    
+$mail->IsHTML(true); // send as HTML
+    
+$mail->Subject = "審核通過";
+// 信件標題
+$mail->Body = "審核通過，記得來烤肉";
+//信件內容(html版，就是可以有html標籤的如粗體、斜體之類)
+$mail->AltBody = "審核通過，記得來烤肉";
+//信件內容(純文字版)
+    
+if(!$mail->Send()){
+ echo "寄信發生錯誤：" . $mail->ErrorInfo;
+ //如果有錯誤會印出原因
+}
+else{
+    
+    echo "寄信成功，已提醒來烤肉";
+    echo '<meta http-equiv=REFRESH CONTENT=1;url=index.php>';
+}
+   
+?>
 </body>
 </html>

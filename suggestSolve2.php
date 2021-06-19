@@ -32,7 +32,7 @@
     ?>
 
         <div class="container">
-            <div class="suggestSolveArea">
+            <div class="applyArea">
                 <form action="suggestSolveResult.php" method="post">
                     <table>
                         <tbody>
@@ -43,12 +43,10 @@
                         <tr>
                             <td>意見填寫</td>
                             <td><textarea name="sendContent" rows="6" cols="40" required></textarea></td>
-                            <td><input type="hidden" name="account" rows="6" cols="40" required></input></td>
-                            <td><input type="hidden"  name="applicantID" value=<?echo $rowUser[0];?>></td>
-                            <td><input type="hidden"  name="email" value=<?echo $rowUser[4];?>></td>
-                            <td><input type="hidden"  name="applicantName" value=<?echo $rowUser[3];?>></td>
                             <?echo $rowUser[0];?>
                             <?echo $rowUser[4];?>
+                            <td><input type="hidden"  name="applicantID" value=<?echo $rowUser[0];?>></td>
+                            <td><input type="hidden"  name="email" value=<?echo $rowUser[4];?>></td>
                         </tr>
                         </tbody>
                     </table>

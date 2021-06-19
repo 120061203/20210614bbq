@@ -15,7 +15,8 @@
     <body>
     <?
     include("sql_connect.inc.php");
-    if($_SESSION['id']!=null){
+    #$_SESSION['id']!=null
+    if(1 == 1){
 
 
 
@@ -25,15 +26,16 @@
     </header>
     <?
     $id = $_SESSION['id'];
-    $sql=" SELECT * FROM `user` where `account`='".$id."' ";
+    $suggest_id = $_GET["suggest_id"];
+    $sql=" SELECT * FROM `suggest` where `suggest_id`='".$suggest_id."' ";
+    $rowSuggest = mysql_fetch_array(mysql_query($sql));
+    $sql=" SELECT * FROM `user` where `account`='".$rowSuggest[1]."' ";   
     $rowUser = mysql_fetch_array(mysql_query($sql));
-    $sql=" SELECT * FROM `renter` where `account`='".$id."' ";   
-    $rowRenter = mysql_fetch_array(mysql_query($sql));
     ?>
 
         <div class="container">
-            <div class="suggestSolveArea">
-                <form action="suggestSolveResult.php" method="post">
+            <div class="applyArea">
+                <form action="suggestReplyResult.php" method="post">
                     <table>
                         <tbody>
                         <tr>
@@ -41,14 +43,15 @@
                             <td><?echo $rowUser[3];?></td>
                         </tr>
                         <tr>
+                            <td>用戶mail</td>
+                            <td><?echo $rowUser[4];?></td>
+                        </tr>
+                        <tr>
                             <td>意見填寫</td>
                             <td><textarea name="sendContent" rows="6" cols="40" required></textarea></td>
-                            <td><input type="hidden" name="account" rows="6" cols="40" required></input></td>
-                            <td><input type="hidden"  name="applicantID" value=<?echo $rowUser[0];?>></td>
-                            <td><input type="hidden"  name="email" value=<?echo $rowUser[4];?>></td>
-                            <td><input type="hidden"  name="applicantName" value=<?echo $rowUser[3];?>></td>
-                            <?echo $rowUser[0];?>
-                            <?echo $rowUser[4];?>
+                            <td><input type="hidden"  name="suggest_id" value=<?echo $suggest_id;?>></td>
+                            <td><input type="hidden"  name="userEmail" value=<?echo $rowUser[4];?>></td>
+                            <td><input type="hidden"  name="userName" value=<?echo $rowUser[3];?>></td>
                         </tr>
                         </tbody>
                     </table>

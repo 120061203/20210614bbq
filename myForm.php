@@ -73,6 +73,7 @@
                             else if($row['apply_refund']==2) echo "退費審核通過";
                             else if($row['apply_refund']==3) echo "退費審核不通過";
                             if($row['payoff_status']==0) echo "未繳費";
+                            else if($row['payoff_status']==-1) echo "審核申請不通過";
                             else if($row['payoff_status']==1) echo "已繳費";
                             
                         ?>
@@ -141,8 +142,8 @@
                         ?>
                         </td>
                         <td>
-                            <a href="applyRefund.php?af_id=<?echo $row['af_id']?>">申請退費</a>
-                            <a href="generatePDF.php?af_id=<?echo $row['af_id']?>">繳費單下載</a>
+                            <a href="generatePDF.php?af_id=<?echo $row['af_id']?>">繳費</a>
+                            <a href="applyRefund.php?af_id=<?echo $row['af_id']?>">退費</a>
                         </td>
                     </tr>
                     <?

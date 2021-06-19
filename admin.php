@@ -77,6 +77,14 @@ if($_SESSION['id']!=null&&($_SESSION['authority']==3))
                 </div>
             </div>
             <div class="card">
+                <a href="suggestAllView.php">
+                    <i class="fas fa-reply"></i>
+                </a>
+                <div class="cardIntro">
+                    意見回覆
+                </div>
+            </div>
+            <div class="card">
                 <a href="logout.php">
                     <i class="fas fa-sign-out-alt"></i>
                 </a>

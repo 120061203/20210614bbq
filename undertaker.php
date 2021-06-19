@@ -61,13 +61,21 @@
                     </div>
                 </div>
                 <div class="card">
-                <a href="adminAnnounce.php">
-                    <i class="fas fa-bullhorn"></i>
-                </a>
-                <div class="cardIntro">
-                    系統公告
+                    <a href="adminAnnounce.php">
+                        <i class="fas fa-bullhorn"></i>
+                    </a>
+                    <div class="cardIntro">
+                        系統公告
+                    </div>
                 </div>
-            </div>
+                <div class="card">
+                    <a href="suggestAllView.php">
+                        <i class="fas fa-reply"></i>
+                    </a>
+                    <div class="cardIntro">
+                        意見回覆
+                    </div>
+                </div>
                 <div class="card">
                     <a href="logout.php">
                         <i class="fas fa-sign-out-alt"></i>

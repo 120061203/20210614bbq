@@ -22,9 +22,13 @@
     </header>
     <?
 
+    $applicantID=$_POST["applicantID"];
     $applicantName=$_POST["applicantName"];
+    $email=$_POST["email"];
+    echo $applicantID;
+    echo $email;
     $sendContent=nl2br($_POST["sendContent"]);
-
+    
     //時間、日期處理
     date_default_timezone_set('Asia/Taipei');
 
@@ -67,7 +71,7 @@
     $mail->Password = "bbqsystemadmin";
     //這邊是你的gmail帳號和密碼
     
-    $mail->FromName = "t1";
+    $mail->FromName = $applicantName;
     // 寄件者名稱(你自己要顯示的名稱)
     $webmaster_email = "bbqsystem20210616@gmail.com";
     //回覆信件至此信箱
@@ -105,7 +109,7 @@
     else{
         echo "送交意見成功";
         echo "寄信成功";
-        echo '<meta http-equiv=REFRESH CONTENT=500;url=renter.php>';
+        echo '<meta http-equiv=REFRESH CONTENT=10;url=renter.php>';
     }
    
     ?>
