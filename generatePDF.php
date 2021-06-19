@@ -15,18 +15,9 @@ class MYPDF extends TCPDF {
 
         // 公司與報表名稱
         $title = '
-<h4 style="font-size: 20pt; font-weight: normal; text-align: center;">MIS 腳印股份有限公司</h4>
+<h4 style="font-size: 20pt; font-weight: normal; text-align:center;">高雄大學烤肉露營區繳費單</h4>
 
-<table>
-    <tr>
-        <td style="width: 30%;"></td>
-        <td style="border-bottom: 2px solid black; font-size: 20pt; font-weight: normal; text-align: center; width: 40%;">員工基本資料</td>
-        <td style="width: 30%;"></td>
-    </tr>
-    <tr>
-        <td colspan="3"></td>
-    </tr>
-</table>';
+';
 
 
         /**
@@ -38,17 +29,37 @@ class MYPDF extends TCPDF {
          */
 
         $fields = '
-<table cellpadding="1">
-    <tr>
-        <td style="border-bottom: 1px solid black; width: 95px;"> ID</td>
-        <td style="border-bottom: 1px solid black; width: 90px;">Name</td>
-        <td style="border-bottom: 1px solid black; width: 90px;">Sex</td>
-        <td style="border-bottom: 1px solid black; width: 90px;">Birthday</td>
-        <td style="border-bottom: 1px solid black; width: 90px;">Tel</td>
-        <td style="border-bottom: 1px solid black; width: 90px;">Mobile</td>
-        <td style="border-bottom: 1px solid black; width: auto;">Address</td> 
-    </tr>
-</table>';
+        
+        <table style="width:90%;height:100%">
+        <tr style="border-bottom:1px solid #ddd;">
+            <td style="font-weight:bold;border-bottom:1px solid #ddd;">申請單編號</td>
+            <td style="border-bottom:1px solid #ddd;">20210619154036000</td>
+            <td style="font-weight:bold;border-bottom:1px solid #ddd;">使用時間</td>
+            <td style="border-bottom:1px solid #ddd;">2021-06-20 09:00:00~17:00:00</td>
+        
+        </tr>
+        <tr style="border-bottom:1px solid #ddd;">
+            <td style="font-weight:bold;border-bottom:1px solid #ddd;">申請人</td>
+            <td style="border-bottom:1px solid #ddd;">song</td>
+            <td style="font-weight:bold;border-bottom:1px solid #ddd;">人數</td>
+            <td style="border-bottom:1px solid #ddd;">1</td>
+        </tr>
+        <tr style="border-bottom:1px solid #ddd;">
+            <td style="font-weight:bold;border-bottom:1px solid #ddd;">烤肉區數量</td>
+            <td style="border-bottom:1px solid #ddd;">1</td>
+            <td style="font-weight:bold;border-bottom:1px solid #ddd;">露營區數量</td>
+            <td style="border-bottom:1px solid #ddd;">0</td>
+        
+        </tr>
+        <tr >
+            <td style="font-weight:bold;border-bottom:1px solid #ddd;">總價</td>
+            <td style="border-bottom:1px solid #ddd;">1200</td>
+            <td style="font-weight:bold;">承辦人簽章:</td>
+            <td></td>
+        
+        </tr>
+        </table>
+        ';
 
         // 設定不同頁要顯示的內容 (數值為對應的頁數)
         switch ($this->getPage()) {
@@ -58,7 +69,7 @@ class MYPDF extends TCPDF {
 
                 // 增加列印日期的資訊
                 $html = $title . '
-<table cellpadding="1">
+<table cellpadding="1" >
     <tr>
         <td>列印日期：' . date('Y-m-d') . ' ' . date('H:i') . '</td>
         <td></td>
@@ -96,7 +107,7 @@ $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8',
 // set document information
 $pdf->SetCreator(PDF_CREATOR);
 $pdf->SetAuthor('Nicola Asuni');
-$pdf->SetTitle('MIS 腳印 - 員工基本資料');
+$pdf->SetTitle('高雄大學烤肉露營區繳費單');
 $pdf->SetSubject('TCPDF Tutorial');
 $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
 
@@ -114,7 +125,7 @@ $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
 // set margins
 // 版面配置 > 邊界
 // $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
-$pdf->SetMargins(1, 1, 1);
+$pdf->SetMargins(10, 10, 1);
 
 // 頁首上方與頁面頂端的距離
 $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
@@ -150,7 +161,7 @@ $pdf->SetFont('msungstdlight', '', 10);
 // Add a page
 // This method has several options, check the source code documentation for more information.
 // 版面配置：P 直向 | L 橫向, 紙張大小 (必須大寫字母)
-$pdf->AddPage('P', 'LETTER');
+$pdf->AddPage('P', 'A4');
 
 // set text shadow effect
 // 文字陰影
@@ -165,29 +176,29 @@ $pdf->AddPage('P', 'LETTER');
 // <p style="color:#CC0000;">TO IMPROVE AND EXPAND TCPDF I NEED YOUR SUPPORT, PLEASE <a href="http://sourceforge.net/donate/index.php?group_id=128076">MAKE A DONATION!</a></p>
 // EOD;
 
-for ($i = 0; $i < 50; $i++) {
-    /**
-     * 資料欄位
-     *
-     * 所有欄位的 width 設定值均與「標題欄位」互相對應，除第一個 <td> width 須 -5px
-     * 最後一個 <td> 必須設定 width: auto;，才能將剩餘寬度拉至最寬
-     * style 屬性可使用 text-align: left|center|right; 來設定文字水平對齊方式
-     */
+// for ($i = 0; $i < 50; $i++) {
+//     /**
+//      * 資料欄位
+//      *
+//      * 所有欄位的 width 設定值均與「標題欄位」互相對應，除第一個 <td> width 須 -5px
+//      * 最後一個 <td> 必須設定 width: auto;，才能將剩餘寬度拉至最寬
+//      * style 屬性可使用 text-align: left|center|right; 來設定文字水平對齊方式
+//      */
 
-    $html .= '
-        <tr>
-            <td style="line-height: 1.5; width: 90px;">102050' . $i . '</td>
-            <td style="line-height: 1.5; width: 90px;">王' . $i . '傑</td>
-            <td style="line-height: 1.5; width: 90px;">M</td>
-            <td style="line-height: 1.5; width: 90px;">72-11-16</td>
-            <td style="line-height: 1.5; width: 90px;">06-2600000</td>
-            <td style="line-height: 1.5; width: 90px;">0952000000</td>
-            <td style="line-height: 1.5; width: auto;">台南市安平區健康三街</td>
-        </tr>';
-}
+//     $html .= '
+//         <tr>
+//             <td style="line-height: 1.5; width: 90px;">102050' . $i . '</td>
+//             <td style="line-height: 1.5; width: 90px;">王' . $i . '傑</td>
+//             <td style="line-height: 1.5; width: 90px;">M</td>
+//             <td style="line-height: 1.5; width: 90px;">72-11-16</td>
+//             <td style="line-height: 1.5; width: 90px;">06-2600000</td>
+//             <td style="line-height: 1.5; width: 90px;">0952000000</td>
+//             <td style="line-height: 1.5; width: auto;">台南市安平區健康三街</td>
+//         </tr>';
+// }
 
-$html = '
-<table cellpadding="1">' . $html . '</table>';
+// $html = '
+// <table cellpadding="1">' . $html . '</table>';
 
 $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
 
@@ -196,4 +207,4 @@ $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
 // Close and output PDF document
 // This method has several options, check the source code documentation for more information.
 // 下載 PDF 的檔案名稱 (不可取中文名，即使有也會自動省略中文名)
-$pdf->Output('mis-employees.pdf', 'I');
+$pdf->Output('NUKbbq.pdf', 'I');

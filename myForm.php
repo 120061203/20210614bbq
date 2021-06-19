@@ -142,6 +142,7 @@
                         </td>
                         <td>
                             <a href="applyRefund.php?af_id=<?echo $row['af_id']?>">申請退費</a>
+                            <a href="generatePDF.php?af_id=<?echo $row['af_id']?>">繳費單下載</a>
                         </td>
                     </tr>
                     <?
